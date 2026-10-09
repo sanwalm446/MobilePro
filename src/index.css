@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #000000;
+  }
+  
+  /* User Requirement: Text written in all features must be deep, sharp black */
+  input, textarea, select {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="datetime-local"],
+  textarea,
+  select {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-weight: 500;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #64748b !important;
+    -webkit-text-fill-color: #64748b !important;
+  }
+
+  .font-mono, .tabular-nums {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ========================================================= */
+/* CSS PAGED MEDIA SPECIFIC @PAGE RULES                      */
+/* Standard A4 (210x297mm) and 80mm Continuous Thermal Roll   */
+/* Ensures correct paper sizing and automatic content height */
+/* ========================================================= */
+
+@page {
+  size: auto;
+  margin: 0;
+}
+
+@page a4-invoice {
+  size: A4 portrait;
+  margin: 8mm 8mm 8mm 8mm;
+}
+
+@page thermal-receipt {
+  size: 80mm auto;
+  margin: 0;
+}
+
+@page thermal-receipt-58 {
+  size: 58mm auto;
+  margin: 0;
+}
+
+/* Screen rule: hide isolated print mount during regular browsing */
+#mobiflow-print-mount {
+  display: none !important;
+}
+
+@media print {
+  /* Connect layout containers to specific @page rules */
+  .a4-invoice-container,
+  .print-page-a4,
+  .mobiflow-print-a4,
+  [data-print-format="a4"] #printable-receipt-area,
+  [data-print-format="a4"] #printable-payment-receipt-content,
+  [data-print-format="a4"] #mobiflow-print-mount {
+    page: a4-invoice !important;
+  }
+
+  .thermal-receipt-container,
+  .print-page-thermal,
+  .mobiflow-print-80mm,
+  [data-print-format="80mm"] #printable-receipt-area,
+  [data-print-format="80mm"] #printable-payment-receipt-content,
+  [data-print-format="80mm"] #mobiflow-print-mount {
+    page: thermal-receipt !important;
+  }
+
+  .mobiflow-print-58mm,
+  [data-print-format="58mm"] #printable-receipt-area,
+  [data-print-format="58mm"] #printable-payment-receipt-content,
+  [data-print-format="58mm"] #mobiflow-print-mount {
+    page: thermal-receipt-58 !important;
+  }
+
+  /* When programmatic print runs via printInvoice */
+  body.mobiflow-is-printing > *:not(#mobiflow-print-mount) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.mobiflow-is-printing #mobiflow-print-mount {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+  }
+
+  /* Format-specific body constraints */
+  body[data-print-format="80mm"],
+  body.mobiflow-is-printing[data-print-format="80mm"] {
+    width: 80mm !important;
+    max-width: 80mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body[data-print-format="a4"],
+  body.mobiflow-is-printing[data-print-format="a4"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Default cleanup for browser-native print (e.g. Ctrl+P) */
+  header, nav, aside, footer, .no-print, button, input, select {
+    display: none !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Strip modal backdrops during browser-native print */
+  .fixed.inset-0 {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    display: block !important;
+  }
+
+  /* Strip card border and shadows during print */
+  .relative.bg-white.rounded-xl,
+  .relative.bg-white.rounded-2xl {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  /* Strip preview scroll area height and padding during print */
+  .max-h-\[80vh\],
+  .max-h-\[82vh\] {
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* Automatic content-based height without excessive whitespace for thermal receipts */
+  .thermal-receipt-container,
+  .mobiflow-print-80mm,
+  .mobiflow-print-58mm,
+  [data-print-format="80mm"] #printable-receipt-area,
+  [data-print-format="80mm"] #printable-payment-receipt-content {
+    width: 80mm !important;
+    max-width: 80mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 2mm 3mm 4mm 3mm !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+    page-break-inside: auto !important;
+    page-break-after: avoid !important;
+    break-inside: auto !important;
+    break-after: avoid !important;
+  }
+
+  /* Standard A4 invoice boundaries */
+  .a4-invoice-container,
+  .mobiflow-print-a4,
+  [data-print-format="a4"] #printable-receipt-area,
+  [data-print-format="a4"] #printable-payment-receipt-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure the printable invoice/receipt is completely visible, auto-height and starts at top */
+  #printable-receipt-area,
+  #printable-payment-receipt-content {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #printable-receipt-area *,
+  #printable-payment-receipt-content *,
+  #mobiflow-print-mount * {
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}

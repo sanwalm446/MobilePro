@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Vibrant Blue to Cyan Gradient for Main Ribbon -->
+    <linearGradient id="mobiBlueCyanDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" />
+      <stop offset="50%" stop-color="#00B4FF" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <!-- Deep Blue/Purple Gradient for 3D Underfold Shadow -->
+    <linearGradient id="mobiDeepFoldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+
+    <!-- Right Wing Gradient with Cyan Highlights -->
+    <linearGradient id="mobiRightWingDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0052FF" />
+      <stop offset="60%" stop-color="#00C8FF" />
+      <stop offset="100%" stop-color="#67E8F9" />
+    </linearGradient>
+
+    <!-- Pixel Tiles Gradient -->
+    <linearGradient id="mobiPixelGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#00F0FF" />
+    </linearGradient>
+
+    <!-- Text Flow Gradient -->
+    <linearGradient id="mobiFlowTextDark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="60%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#A78BFA" />
+    </linearGradient>
+
+    <!-- Subtle Glow for Dark Backgrounds -->
+    <filter id="mobiGlowDark" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="#00A3FF" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- 3D Ribbon 'M' Symbol -->
+  <g filter="url(#mobiGlowDark)">
+    <!-- Back Loop / Center Fold (Deep Purple-Blue) -->
+    <path d="M190 140 C 235 230, 260 270, 275 240 C 290 210, 315 155, 335 150 C 355 145, 370 170, 355 210 C 335 260, 280 290, 240 260 C 205 235, 175 160, 190 140 Z" fill="url(#mobiDeepFoldDark)" />
+
+    <!-- Left Main Curved Ribbon Arm -->
+    <path d="M115 190 C 115 110, 150 95, 195 145 L 245 210 C 230 240, 205 265, 175 270 C 130 275, 115 240, 115 190 Z" fill="url(#mobiBlueCyanDark)" />
+
+    <!-- Left Inner Twist & Depth -->
+    <path d="M125 185 C 130 130, 160 115, 190 155 C 160 195, 140 225, 125 185 Z" fill="#002D9C" opacity="0.45" />
+
+    <!-- Right Flowing Swoop & Dynamic Curve -->
+    <path d="M230 220 C 275 160, 310 115, 360 140 C 390 155, 385 195, 365 245 C 340 300, 305 285, 290 250 C 270 205, 245 210, 230 220 Z" fill="url(#mobiRightWingDark)" />
+
+    <!-- Floating Digital Pixel Tiles / Diamonds (Top Right) -->
+    <polygon points="390,95 420,80 435,108 405,123" fill="url(#mobiPixelGradDark)" />
+    <polygon points="360,118 390,105 402,128 372,141" fill="url(#mobiPixelGradDark)" />
+    <polygon points="392,135 422,122 434,145 404,158" fill="url(#mobiPixelGradDark)" />
+  </g>
+
+  <!-- Wordmark: MOBIFLOW -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="64" letter-spacing="-1">
+    <text x="75" y="380" fill="#FFFFFF">Mobi</text>
+    <text x="235" y="380" fill="url(#mobiFlowTextDark)">flow</text>
+  </g>
+
+  <!-- Subtitle Divider Lines & SOFTWARE Text -->
+  <g>
+    <!-- Left Divider Line -->
+    <line x1="75" y1="418" x2="165" y2="418" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" />
+    
+    <!-- S O F T W A R E -->
+    <text x="250" y="424" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="20" letter-spacing="11" fill="#E2E8F0">SOFTWARE</text>
+    
+    <!-- Right Divider Line -->
+    <line x1="335" y1="418" x2="425" y2="418" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+</svg>

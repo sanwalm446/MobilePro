@@ -1,0 +1,8 @@
+{
+  "name": "MobiFlow Software - Smart Mobile Shop Management Software",
+  "description": "Manage your mobile shop with MobiFlow Software. Track sales, stock, purchases, expenses, profit, customers, suppliers, staff attendance and more.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
